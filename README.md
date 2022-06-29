@@ -8,6 +8,11 @@ Currently supports:
 - Manual panel changing.
 - Timer based panel changing.
 
+Requires:
+
+- Livewire
+- AlpineJS
+
 ## Getting started
 
 Require the package
@@ -16,10 +21,9 @@ Require the package
 composer require 26b/laravel-dynamic-panels
 ```
 
-
 ## Usage
 
-Create as many livewire components as you want, where you overload the method `getPanels` with a list of the panels you want to display.
+Create as many livewire components as you want, where you overload the method `getPanels()` with a list of the panels you want to display.
 
 ```php
 namespace App\Http\Livewire\DynamicPanels;
@@ -43,6 +47,12 @@ class Container extends PanelContainer
         ];
     }
 }
+```
+
+Next, on your blade view, call the livewire component.
+
+```html
+<livewire:dynamic-panels.container />
 ```
 
 ## Customizing

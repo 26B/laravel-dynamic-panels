@@ -8,13 +8,11 @@
             }
 
             setInterval(() => {
-                console.log('coio');
                 $wire.next();
             }, this.interval)
         },
     }"
     x-init="loop"
 >
-
     {{ $slot }}
 </div>
