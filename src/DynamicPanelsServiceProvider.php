@@ -6,8 +6,19 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\LaravelPackageTools\Package;
 use TwentySixB\LaravelDynamicPanels\Http\Livewire\PanelContainer;
 
+/**
+ * Package Service Provider
+ *
+ */
 class DynamicPanelsServiceProvider extends PackageServiceProvider
 {
+
+    /**
+     * @inheritDoc
+     *
+     * @param Package $package
+     * @return void
+     */
     public function configurePackage(Package $package) : void
     {
         $package->name('laravel-dynamic-panels')
@@ -16,13 +27,12 @@ class DynamicPanelsServiceProvider extends PackageServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * @inheritDoc
      *
      * @return void
      */
-    public function boot()
+    public function packageBooted() : void
     {
-        parent::boot();
         \Livewire::component('dynamic-panels', PanelContainer::class);
     }
 }
