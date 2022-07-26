@@ -75,7 +75,8 @@ class PanelContainer extends Component
     public function next() : string
     {
         $panels = $this->getPanels();
-        return $this->panel = $panels[ rand(0, count($panels)-1) ];
+
+        return $this->active = $panels[ rand(0, count($panels)-1) ];
     }
 
     /**
@@ -87,7 +88,8 @@ class PanelContainer extends Component
     public function open(string $name) : string
     {
         $panels = $this->getPanels();
+
         // TODO: Check if panel exists.
-        return $this->panel = $name;
+        return $this->active = $name;
     }
 }
