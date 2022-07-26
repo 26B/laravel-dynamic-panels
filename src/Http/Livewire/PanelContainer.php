@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class PanelContainer extends Component
 {
 
-    protected $listeners = ['next'];
+    protected $listeners = ['next', 'open'];
 
     /**
      * Number of milliseconds to rotate panels.
@@ -19,6 +19,13 @@ class PanelContainer extends Component
      * @var integer
      */
     public int $interval = 3000;
+
+    /**
+     * Name of the active panel.
+     *
+     * @var string
+     */
+    public string $active = '';
 
     /**
      * List of panels to render.
@@ -37,7 +44,11 @@ class PanelContainer extends Component
      */
     public function render()
     {
-        $panel = $this->next();
+        if (empty($this->active)) {
+            $this->active = $this->next();
+        }
+
+        $panel = $this->active;
 
         if (Str::startsWith($panel, 'livewire:')) {
             $type = 'livewire';
@@ -49,8 +60,8 @@ class PanelContainer extends Component
 
         return view::first(
             [
-                'dynamic-panels::livewire.dynamic-panels.container',
                 'livewire.dynamic-panels.container',
+                'dynamic-panels::livewire.dynamic-panels.container',
             ]
         )->with('panel', $name)
             ->with('type', $type);
@@ -64,6 +75,21 @@ class PanelContainer extends Component
     public function next() : string
     {
         $panels = $this->getPanels();
-        return $panels[ rand(0, count($panels)-1) ];
+
+        return $this->active = $panels[ rand(0, count($panels)-1) ];
+    }
+
+    /**
+     * Open a specified panel.
+     *
+     * @param string $name
+     * @return string
+     */
+    public function open(string $name) : string
+    {
+        $panels = $this->getPanels();
+
+        // TODO: Check if panel exists.
+        return $this->active = $name;
     }
 }
