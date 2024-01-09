@@ -1,6 +1,6 @@
 <?php
 
-namespace TwentySixB\LaravelDynamicPanels\Http\Livewire;
+namespace TwentySixB\LaravelDynamicPanels\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\View;

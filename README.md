@@ -26,9 +26,9 @@ composer require 26b/laravel-dynamic-panels
 Create as many livewire components as you want, where you overload the method `getPanels()` with a list of the panels you want to display.
 
 ```php
-namespace App\Http\Livewire\DynamicPanels;
+namespace App\Livewire\DynamicPanels;
 
-use TwentySixB\LaravelDynamicPanels\Http\Livewire\PanelContainer;
+use TwentySixB\LaravelDynamicPanels\Livewire\PanelContainer;
 
 class Container extends PanelContainer
 {

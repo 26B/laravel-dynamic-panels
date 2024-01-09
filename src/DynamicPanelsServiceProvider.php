@@ -4,7 +4,7 @@ namespace TwentySixB\LaravelDynamicPanels;
 
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Spatie\LaravelPackageTools\Package;
-use TwentySixB\LaravelDynamicPanels\Http\Livewire\PanelContainer;
+use TwentySixB\LaravelDynamicPanels\Livewire\PanelContainer;
 
 /**
  * Package Service Provider
